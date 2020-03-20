@@ -66,8 +66,7 @@ function writePassword() {
 
 do {
     passLength = prompt("How long would you like your password? min 8 characters");
-    while (passLength || passLength < 8 || passLength > 128)
-        alert("ERROR, no characters. Try Again");
+    while (isNaN(passwordLength) || passLength < 8 || passLength > 128)
 
     while (includeLower, includeUpper, includeNum, includeSpecialchar) {
         includeLower = confirm("do you want lowerCase?");
@@ -75,13 +74,14 @@ do {
         includeNum = confirm("do you want numbers?");
         includeSpecialchar = confirm("do you want special characters?");
 
-        if (includeLower, includeUpper, includeNum, includeSpecialchar) {
+        if (includeLower && includeUpper && includeNum && includeSpecialchar) {
 
         }
     }
 
     // no more errors then password is generated
     var password = generatePassword(passLength, includeLower, includeUpper, includeNum, includeSpecialchar);
+
 
     // New password
     generateBtn.addEventListener("click", writePassword);
