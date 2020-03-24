@@ -1,87 +1,64 @@
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
+var newPassword;
+var upperCase;
+var lowerCase;
+var Numeric;
+var SpecialChars;
+var newPasswordLength
+var newSpecialChars
+//Array characters fo password
+var specialCharacters = "1@#$%^&*()|:?/";
+var upperCase = "ABCDEFGHIJKLMNOPKRSTUVWXYZ";
+var numbers = "0123456789"
+var lowerCaseLetters = upperCase.toLocaleLowerCase()
 
-// Write password to the #password input
-function writePassword() {
-    var password = generatePassword();
-    var passwordText = document.querySelector("#password");
+var pass_length = document.getElementById("pass_length");
+var lowerchecker = document.getElementById("lowercase")
+var upperchecker = document.getElementById("uppercase");
+var numchecker = document.getElementById('numbers');
+var specchecker = document.getElementById("special");
 
-    passwordText.value = password;
+//buttons
+var generatebtn = document.getElementById("generate_btn");
+var cclipboardbtn = document.getElementById('cclipboard_btn');
 
+var urpassword = document.getElementById("ur_password");
+
+//adding the eventlistener 
+generatebtn.addEventListener("click", function() {
+    var characters = " ";
+    if (lowerchecker.checked) {
+        characters += lowerCase;
+    }
+    else {
+        " ";
+    }
+    if (upperchecker.checked) {
+        characters += upperCase;
+    }
+    else {
+        " ";
+    }
+    if (numchecker.checked) {
+        characters += numbers;
+    }
+    else {
+        " ";
+    }
+    if (symchecker.checked) {
+        characters += symbols;
+    }
+    else {
+        " ";
+    }
+    urpassword.value = password(pass_length.value, characters);
+});
+
+function password(l, characters) {
+    var pwd = " ";
+
+    for (var i = 0; i < l; i++) {
+        pwd += characters.charAt(Math.floor(Math.random() * characters.length));
+
+    }
+    return pwd;
 }
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
-//Password Generator
-function generatePassword(lowerCase, upperCase, number, specialChar, ) {
-    password = " ";
-    //valid Characters
-    validChars = [];
-
-    if (lowerCase) {
-        var lowerCase = "a,b,c,d,e,f,g,h,i,g,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z"
-        for (var i = 50; i < 90; i++) {
-            validChars.push(string.fromCharCode(i));
-        }
-    }
-
-    if (upperCase) {
-        var upperCase = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z"
-        for (var i = 65; i < 90; i++) {
-            validChars.push(string.fromCharCode(i));
-        }
-    }
-    if (num) {
-        var num = "0,1,2,3,4,5,6,7,8,9"
-        for (var i = 0; i <= 9; i++) {
-            validChars.push(i);
-        }
-    }
-    if (specialChar) {
-        var specials = "!\"#$%&'()*+,-./:;<=>?@[\\]^_";
-        for (var i = 0; i < specials.length; i++) {
-            validChars.push(specials[i]);
-        }
-    }
-    //password Generate
-    for (var i = 0; i < length; i++) {
-        charnum = Math.floor(Math.random() * validChars.length)
-        pass += validChars[charnum];
-    }
-    //return password
-    return pass;
-}
-
-
-// Password input 
-function writePassword() {
-    var passLength;
-    var includeLower = false;
-    var includeUpper = false;
-    var includeNum = false;
-    var includeSpecialchar = false;
-}
-
-
-do {
-    passLength = prompt("How long would you like your password? min 8 characters");
-    while (isNaN(passwordLength) || passLength < 8 || passLength > 128)
-
-    while (includeLower, includeUpper, includeNum, includeSpecialchar) {
-        includeLower = confirm("do you want lowerCase?");
-        includeUpper = confirm("do you want upper?");
-        includeNum = confirm("do you want numbers?");
-        includeSpecialchar = confirm("do you want special characters?");
-
-        if (includeLower && includeUpper && includeNum && includeSpecialchar) {
-
-        }
-    }
-
-    // no more errors then password is generated
-    var password = generatePassword(passLength, includeLower, includeUpper, includeNum, includeSpecialchar);
-
-
-    // New password
-    generateBtn.addEventListener("click", writePassword);
