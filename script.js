@@ -51,15 +51,18 @@ function generatePassword () {
       return '';
     }
 
-  for(var i = 0; i < charcInput.length; i++){
-   // console.log(charcInput);
+    var password = '';
+
+  for(var i = 0; i < charcInput; i++){
+   console.log(typeof(charcInput));
    var randomIndex = Math.floor(Math.random() * userChoice.length);
 
-   var password = '';
+  
    //character random array
    var randomCharc = userChoice[randomIndex];
    //console.log(randomCharc);
    password = password + randomCharc;
+   console.log(password);
    
   }
 
